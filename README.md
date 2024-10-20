@@ -6,6 +6,5 @@ The Go publisher is a cli application that receives messages from CLI and sends 
 The Java subscriber is a Quarkus application that listen to Rabbit messages and simulates real work for each message.
 
 ## TODO
-- [ ] Dockerize applications
+- [x] Dockerize applications
 - [ ] Document applications
-- [ ] Make

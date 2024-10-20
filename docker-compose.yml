@@ -1,4 +1,20 @@
 services:
+  java_subscriber:
+    image: 4strodev/java_rabbit_subscriber
+    restart: on-failure
+    environment:
+      RABBITMQ_HOST: rabbit
+    depends_on:
+      - rabbit
+
+  go_publisher:
+    image: 4strodev/rabbit_go_publisher
+    restart: on-failure
+    environment:
+      RABBIT_URL: "amqp://rabbit:rabbit@rabbit:5672/"
+    depends_on:
+      - rabbit
+
   rabbit:
     image: rabbitmq:3.13-management
     ports:

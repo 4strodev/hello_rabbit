@@ -2,6 +2,7 @@ package infrastructure
 
 import (
 	"log/slog"
+	"os"
 
 	"github.com/4strodev/wiring/pkg"
 	amqp "github.com/rabbitmq/amqp091-go"
@@ -20,7 +21,7 @@ func (r *RabbitComponent) Init(container pkg.Container) error {
 		return err
 	}
 
-	conn, err := amqp.Dial("amqp://rabbit:rabbit@localhost:5672/")
+	conn, err := amqp.Dial(os.Getenv("RABBIT_URL"))
 	if err != nil {
 		return err
 	}
